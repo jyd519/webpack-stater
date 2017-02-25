@@ -8,15 +8,15 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 
 module.exports = function(env) {
   return {
-    devtool: 'cheap-module-source-map',
+    // devtool: 'cheap-module-source-map',
     entry: {
       app: './app.js',
-      hmr: 'webpack-hot-middleware/client',
+      // hmr: 'webpack-hot-middleware/client',
       vendor: './vendor.ts'
     },
     output: {
       path: path.join(__dirname, 'build'),
-      filename: '[name].js'
+      filename: '[name]-[chunkhash].js'
     },
     module: {
       rules: [
@@ -53,7 +53,7 @@ module.exports = function(env) {
     },
     plugins: [
       new ExtractTextPlugin({
-        filename: "[name].css"
+        filename: "[name]-[chunkhash].css"
       }),
       new HtmlWebpackPlugin({
         template: './index.html' 
@@ -62,12 +62,12 @@ module.exports = function(env) {
         name: ['vendor', 'manifest'] // Specify the common bundle's name.
       }),
       new HtmlWebpackPlugin({
-        filename: "page1.html",
         tempate: "page.html"
       }),
+      // new webpack.NamedModulesPlugin(),
       new webpack.DefinePlugin({
       }),
-      new webpack.HotModuleReplacementPlugin(),
+      // new webpack.HotModuleReplacementPlugin(),
       // output stats
       new ManifestPlugin()
     ]
