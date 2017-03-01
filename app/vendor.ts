@@ -4,4 +4,3 @@ import 'jquery';
 import 'lodash';
 import 'bootstrap';
 
-require('jquery');
