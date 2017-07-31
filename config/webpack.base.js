@@ -12,7 +12,7 @@ const ENV = process.env.NODE_ENV;
 module.exports = function(env) {
   return {
     entry: {
-      app: './app/app.js',
+      app: './app/app.ts',
       vendor: './app/vendor.ts'
     },
     output: {

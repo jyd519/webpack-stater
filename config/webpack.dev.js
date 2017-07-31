@@ -13,7 +13,16 @@ module.exports = function(env) {
       contentBase: helpers.root('build'),
       compress: true,
       hot: true,
-      port: 9000
+      port: 9000,
+      proxy: {
+        "/client/**": {
+          target: "http://localhost:8080/contest/"
+        },
+        "/websocket/**": {
+          target: "http://localhost:8080/contest/",
+          ws: true
+        }
+      }
     },
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
